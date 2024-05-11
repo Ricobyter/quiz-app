@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { fetchQuizQuestions } from './API';
 //Components
 import QuestionCard from './components/QuestionCard';
+import bgImage from './images/quizbg2.jpg'
 
 //Types
 import { QuestionState, Difficulty } from './API';
@@ -87,14 +88,14 @@ function App() {
   }
 
   return (
-    <div className=''>
-      <h1 className='text-5xl font-extrabold'>Quiz App</h1>
+    <div className="text-white flex justify-center items-center flex-col" style={{backgroundImage: `url(${bgImage})` , backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh'}} >
+      <h1 className='text-5xl mb-10'>Quiz Mantra</h1>
 
       {gameOver || userAnswers.length === TOTAL_QUES ? (
-        <button onClick={startQuiz}>Start</button>
+        <button className='px-3 py-2 rounded-xl bg-purple-600 text-white text-xl hover:bg-purple-800 hover:scale-105 duration-100 ease-in-out' onClick={startQuiz}>Start Quiz</button>
       ) : null}
 
-      {!gameOver ? <p>Score: {score}</p> : null}
+      
 
       {loading &&
         <p>Loading Questions...</p>
@@ -111,8 +112,10 @@ function App() {
       )}
 
       {!loading && !gameOver && userAnswers.length === number + 1 && number !== TOTAL_QUES - 1 ? (
-        <button onClick={nextQuestion}>Next Question</button>
+        <button className='px-3 py-1 text-lg rounded-lg bg-blue-800 text-white' onClick={nextQuestion}>Next Question</button>
       ) : null}
+
+{!gameOver ? <p className='text-2xl mt-6'>Score: {score}</p> : null}
     </div>
   );
 }
