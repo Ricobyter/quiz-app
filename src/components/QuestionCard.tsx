@@ -17,19 +17,30 @@ const QuestionCard: React.FC<Props> = ({
     userAnswer,
     questionNum,
     totalQues }) => (
-    <div>
+    <div className='font-montserrat'>
         {/* <p className='number'>
             Question : {questionNum} / {totalQues}
         </p> */}
-        <p className='text-2xl w-[50vw] bg-purple-700 text-white border-purple-600 px-4 py-3 rounded-xl mb-8 border-4 shadow-xl' dangerouslySetInnerHTML={{ __html: question }} />
-        <div className='grid grid-cols-2 gap-6'>
-            {answers.map(answer => (
-                <div key={answer} >
-                    <button className='bg-red-500 w-full py-2 rounded-xl' disabled={userAnswer ? true : false} value={answer} onClick={callback} >
-                    <span dangerouslySetInnerHTML={{ __html: answer }} />
-                    </button>
-                </div>
-            ))}
+        <p className='text-2xl w-[50vw] bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-gray-500 px-4 py-3 rounded-xl mb-8  shadow-md' dangerouslySetInnerHTML={{ __html: question }} />
+        <div className='grid grid-cols-2 gap-4 text-white'>
+        {answers.map((answer, index) => (
+        <div key={index} className="mb-4">
+          <button
+            disabled={userAnswer ? true : false}
+            value={answer}
+            onClick={callback}
+            className={`w-full bg-gradient-to-r ${
+              userAnswer?.correctAnswer === answer
+                ? 'from-green-400 to-green-600'
+                : userAnswer?.answer === answer
+                ? 'from-red-400 to-red-600'
+                : 'from-purple-600 to-purple-500'
+            } text-white font-semibold py-2 px-4 rounded-lg cursor-pointer`}
+          >
+            <span dangerouslySetInnerHTML={{ __html: answer }} />
+          </button>
+        </div>
+      ))}
         </div>
     </div>
 )
