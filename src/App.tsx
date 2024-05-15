@@ -118,12 +118,11 @@ function App() {
           userAnswer={userAnswers ? userAnswers[number] : undefined}
           callback={checkAnswer} />
       ): null}
-      
-
 
       {!loading && !gameOver && userAnswers.length === number + 1 && number !== TOTAL_QUES - 1 ? (
-        <button className='px-3 py-2 mt-4 text-montserrat text-lg rounded-lg bg-gradient-to-r from-green-600 to-green-500 text-white scale-105 duration-75' onClick={nextQuestion}>Next Question</button>
+        <button className='px-3 py-2 mt-4 text-montserrat text-lg rounded-lg bg-gradient-to-r from-green-600 to-green-500 text-white scale-105 duration-75 ' onClick={nextQuestion}>Next Question</button>
       ) : null}
+
       
       </div>
     </div>
