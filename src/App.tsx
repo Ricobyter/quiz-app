@@ -25,6 +25,8 @@ function App() {
   const [score, setScore] = useState(0);
   const [finalScore, setFinalScore] = useState(0);
   const [gameOver, setGameOver] = useState(true)
+  const [difficultylvl, setDifficultylvl] = useState('easy')
+  const [totalQues, setTotalQues] = useState(10)
 
   // console.log(fetchQuizQuestions(TOTAL_QUES, Difficulty.EASY))
   console.log(questions)
@@ -96,7 +98,6 @@ function App() {
 
       {gameOver || userAnswers.length === TOTAL_QUES ? (
         <div className='flex justify-center items-center'>
-
         <button className='px-3 py-2 rounded-xl bg-purple-600 font-montserrat text-white text-xl hover:bg-purple-800 hover:scale-105 duration-100 ease-in-out' onClick={startQuiz}>Start New Quiz</button>
         </div>
       ) : null}
