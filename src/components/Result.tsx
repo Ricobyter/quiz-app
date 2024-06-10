@@ -1,4 +1,4 @@
-import React from 'react'
+import trophy from '../images/trophy.png'
 
 export default function Result({
   score,
@@ -16,12 +16,15 @@ export default function Result({
     window.location.reload()
   }
   return (
-    <div className='bg-purple-700 p-4 rounded-xl flex flex-col gap-3 justify-center items-center'>
-      <h1 className='text-4xl text-white'>You answered {correctAnswer} correctly</h1>
-      <h1 className='text-4xl text-white'>You answered {incorrectAnswer} incorrectly</h1>
-      <h1 className='text-4xl text-white'>Your Score is {result} out of 100</h1>
-      <button className='bg-purple-600 text-stone-200 text-xl px-2 py-1 rounded-md hover:text-stone-100 hover:bg-purple-500 duration-150 ease-in-out' onClick={startNewGame}>New Game</button>
+    <div className='w-full flex justify-center items-center'>
+    <div className='bg-blue-400 w-[90%] border-2 border-orange-500 p-4 rounded-xl flex flex-col gap-3 justify-center items-center'>
+      <img src={trophy} alt=""  className='w-[10rem] h-[10rem] bg-center'/>
+      <h1 className='text-2xl text-white'>{correctAnswer} answered correctly</h1>
+      <h1 className='text-2xl text-white'>{incorrectAnswer} answered incorrectly</h1>
+      <h1 className='text-2xl text-white'>Your Score: {result}</h1>
+      <button className='bg-blue-700 hover:bg-blue-600 text-stone-200 text-xl px-2 py-1 rounded-md hover:text-stone-100 duration-150 ease-in-out' onClick={startNewGame}>New Game</button>
       
+    </div>
     </div>
   )
 }

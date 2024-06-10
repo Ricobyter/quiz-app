@@ -3,6 +3,9 @@ import { fetchQuizQuestions } from './API';
 //Components
 import QuestionCard from './components/QuestionCard';
 
+//images
+import quiz from './images/quiz.png'
+
 //Types
 import { QuestionState, Difficulty } from './API';
 import Result from './components/Result';
@@ -110,26 +113,26 @@ function App() {
   }
 
   return (
-    <div className="text-white flex justify-center items-center flex-col  h-[100vh] w-[100vw] bg-stone-800" >
-        <h1 className='text-5xl mb-14 text-center font-sedan text-stone-300 underline'>Quiz Mantra</h1>
-      <div className='w-full md:w-[50vw] text-purple-600 h-full md:h-[50vh]'>
+    <div className="text-white flex justify-center items-center flex-col  h-[100vh] w-[100vw] bg-blue-300" >
+        <div className='max-md: mt-10 mb-14'>
+          <img src={quiz} alt='quiz image' className='w-[10rem] h-[10rem] bg-center '/>
+        </div>
+      <div className='w-full  md:w-[50vw] text-purple-600 h-full md:h-[50vh]'>
 
       {/* {gameOver || userAnswers.length === selectedTotalQues ? ( */}
-  <div className={`flex flex-col gap-4 justify-center items-center ${showStartButton ? '' : 'hidden'}`}>
-  <button className="px-3 py-2 rounded-xl bg-purple-600 font-montserrat text-white text-xl hover:bg-purple-800 hover:scale-105 duration-100 ease-in-out" onClick={startQuiz}>
-    Start New Quiz
-  </button>
-  <div className="ml-4">
-    <label htmlFor="difficulty" className='text-xl font-semibold'>Difficulty:</label>
-    <select id="difficulty" className="ml-2" onChange={handleDifficultyChange}>
+  <div className={`flex flex-col mt-24 lg:mt-0 gap-4 justify-center items-center ${showStartButton ? '' : 'hidden'}`}>
+<div className='flex flex-col gap-3'>
+  <div className=" flex  gap-6">
+    <label htmlFor="difficulty" className='text-xl font-montserrat font-semibold'>Difficulty</label>
+    <select id="difficulty" className="bg-stone-200 rounded-md outline-none" onChange={handleDifficultyChange}>
       <option value={Difficulty.EASY}>Easy</option>
       <option value={Difficulty.MEDIUM}>Medium</option>
       <option value={Difficulty.HARD}>Hard</option>
     </select>
   </div>
-  <div className="ml-4">
-    <label htmlFor="totalQues" className='text-xl font-semibold'>Total Questions:</label>
-    <select id="totalQues" className="ml-2" onChange={handleTotalQuesChange}>
+  <div className="flex justify-between">
+    <label htmlFor="totalQues" className='text-xl font-montserrat font-semibold'>Questions</label>
+    <select id="totalQues" className="bg-stone-200 rounded-md outline-none" onChange={handleTotalQuesChange}>
       <option value={5}>5</option>
       <option value={10}>10</option>
       <option value={15}>15</option>
@@ -137,6 +140,10 @@ function App() {
       {/* Add more options as needed */}
     </select>
   </div>
+  </div>
+  <button className="px-3 py-2 rounded-xl bg-purple-600 font-montserrat text-white text-xl hover:bg-purple-800 hover:scale-105 duration-100 ease-in-out" onClick={startQuiz}>
+    Start New Quiz
+  </button>
 </div>
 
 {userAnswers.length === selectedTotalQues && (
@@ -144,12 +151,7 @@ function App() {
         score = {score}
         totalQues={selectedTotalQues}/>
 )}
-      {/* ) : null} */}
-      {/* {(!gameOver && !(userAnswers.length === selectedTotalQues)) ? <p className='text-2xl mb-6 text-right'><span className='text-purple-700 font-bold'>Score: </span>{score}</p> : null} */}
-      {/* {((userAnswers.length === selectedTotalQues)) ? <p className='text-2xl mt-10 text-center'><span className='text-purple-700 font-bold'>FinalScore: </span> {finalScore}</p> : null} */}
-
-
-
+      
       {loading &&
         <p className='text-purple-700 font-sedan text-center text-3xl'>Loading Questions...</p>
       }
@@ -167,9 +169,12 @@ function App() {
       ): null}
        </div>
 
+      <div className='w-full flex justify-center items-center'>
+
       {!loading && !gameOver && userAnswers.length === number + 1 && number !== selectedTotalQues - 1 ? (
-        <button className='px-3 py-2 mt-4 text-montserrat text-lg rounded-lg bg-gradient-to-r from-green-600 to-green-500 text-white scale-105 duration-75 ' onClick={nextQuestion}>Next Question</button>
-      ) : null}
+        <button className='px-3 py-2 mt-4 text-montserrat text-lg rounded-lg text-stone-200 hover:text-stone-100 bg-blue-700 hover:bg-blue-600 scale-105 duration-75 ' onClick={nextQuestion}>Next Question</button>
+        ) : null}
+      </div>
 
 
       

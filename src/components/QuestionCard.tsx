@@ -17,28 +17,25 @@ const QuestionCard: React.FC<Props> = ({
     userAnswer,
     questionNum,
     totalQues }) => (
-    <div className='font-montserrat w-[90vw] flex flex-col justify-center items-center p-4 rounded-xl bg-purple-800'>
-        {/* <p className='number'>
-            Question : {questionNum} / {totalQues}
-        </p> */}
+    <div className='font-montserrat w-[90%] md:w-[80%] flex flex-col justify-center items-center p-4 rounded-xl '>
       <div className='flex w-full items-center justify-center'>
 
-        <p className='text-2xl lg:w-[50vw] bg-gradient-to-r from-purple-600 to-purple-500 text-white  px-4 py-3 rounded-md mb-8   text-center' dangerouslySetInnerHTML={{ __html: question }} />
+        <p className='text-2xl lg:w-[50vw] bg-gradient-to-r text-blue-500  border-2 border-orange-700 bg-stone-100 rounded-xl  px-4 py-3  mb-8   text-center' dangerouslySetInnerHTML={{ __html: question }} />
       </div>
-        <div className='flex flex-col gap-2  text-white w-full lg:w-full'>
+        <div className='flex flex-col gap-1  text-white w-full lg:w-full'>
         {answers.map((answer, index) => (
-        <div key={index} className="mb-4 w-full">
+        <div key={index} className="mb-1 w-full">
           <button
             disabled={userAnswer ? true : false}
             value={answer}
             onClick={callback}
             className={`w-full bg-gradient-to-r ${
               userAnswer?.correctAnswer === answer
-                ? 'from-green-400 to-green-600'
+                ? 'from-green-300 to-green-400'
                 : userAnswer?.answer === answer
-                ? 'from-red-400 to-red-600'
-                : 'from-purple-600 to-purple-500'
-            } text-white font-semibold py-2 px-4 rounded-lg cursor-pointer`}
+                ? 'from-red-300 to-red-400'
+                : ''
+            } font-semibold py-2 px-4 rounded-lg cursor-pointer text-blue-500  border-2 border-orange-700 bg-stone-100`}
           >
             <span dangerouslySetInnerHTML={{ __html: answer }} />
           </button>
