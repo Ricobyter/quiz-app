@@ -106,18 +106,23 @@ function App() {
 
   if(gameOver && userAnswers.length === selectedTotalQues){
     return (
+      
+
       <Result 
       score = {score}
       totalQues={selectedTotalQues}/>
+      
     )
   }
 
   return (
     <div className="text-white flex justify-center items-center flex-col  h-[100vh] w-[100vw] bg-blue-300" >
-        <div className='max-md: mt-10 mb-14'>
+      {(userAnswers.length !== selectedTotalQues)&&(
+        <div className='max-md:mt-[4rem] mb-8 md:mb-14'>
           <img src={quiz} alt='quiz image' className='w-[10rem] h-[10rem] bg-center '/>
         </div>
-      <div className='w-full  md:w-[50vw] text-purple-600 h-full md:h-[50vh]'>
+        )}
+      <div className='w-full  md:w-[50vw] text-blue-600 h-full md:h-[50vh]'>
 
       {/* {gameOver || userAnswers.length === selectedTotalQues ? ( */}
   <div className={`flex flex-col mt-24 lg:mt-0 gap-4 justify-center items-center ${showStartButton ? '' : 'hidden'}`}>
@@ -141,8 +146,8 @@ function App() {
     </select>
   </div>
   </div>
-  <button className="px-3 py-2 rounded-xl bg-purple-600 font-montserrat text-white text-xl hover:bg-purple-800 hover:scale-105 duration-100 ease-in-out" onClick={startQuiz}>
-    Start New Quiz
+  <button className="px-3 py-2 rounded-xl bg-blue-700 font-montserrat text-stone-200 text-xl hover:bg-blue-600 hover:scale-105 hover:text- duration-100 ease-in-out" onClick={startQuiz}>
+    Start Quiz
   </button>
 </div>
 
@@ -153,7 +158,7 @@ function App() {
 )}
       
       {loading &&
-        <p className='text-purple-700 font-sedan text-center text-3xl'>Loading Questions...</p>
+        <p className='text-blue-700 font-sedan text-center text-3xl'>Loading Questions...</p>
       }
       <div className='w-full flex justify-center items-center'>
 
