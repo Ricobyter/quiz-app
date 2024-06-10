@@ -17,15 +17,15 @@ const QuestionCard: React.FC<Props> = ({
     userAnswer,
     questionNum,
     totalQues }) => (
-    <div className='font-montserrat w-100vw flex flex-col justify-center items-center'>
+    <div className='font-montserrat w-[90vw] flex flex-col justify-center items-center p-4 rounded-xl bg-purple-800'>
         {/* <p className='number'>
             Question : {questionNum} / {totalQues}
         </p> */}
-      <div className='flex w-[100vw] items-center justify-center'>
+      <div className='flex w-full items-center justify-center'>
 
-        <p className='text-2xl w-[90vw] lg:w-[50vw] bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-gray-500 px-4 py-3 rounded-xl mb-8  shadow-md text-center' dangerouslySetInnerHTML={{ __html: question }} />
+        <p className='text-2xl lg:w-[50vw] bg-gradient-to-r from-purple-600 to-purple-500 text-white  px-4 py-3 rounded-md mb-8   text-center' dangerouslySetInnerHTML={{ __html: question }} />
       </div>
-        <div className='grid grid-cols-2 gap-4 text-white w-[90vw] lg:w-full'>
+        <div className='flex flex-col gap-2  text-white w-full lg:w-full'>
         {answers.map((answer, index) => (
         <div key={index} className="mb-4 w-full">
           <button
